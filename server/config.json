@@ -3,9 +3,9 @@
   "ip": "localhost",
   "db":{
     "user": "user",
-    "pass": "5902425",
+    "pass": "qwerty1234",
     "name": "drone-cafe",
-    "host": "ds115579.mlab.com:15579"
+    "host": "ds147450.mlab.com:47450"
   },
   "api": "/api/v1"
 }

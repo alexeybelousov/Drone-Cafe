@@ -14,7 +14,7 @@ app.use('/users', users);
 const server = http.createServer(app);
 
 mongoose.Promise = global.Promise;
-mongoose.connect(`mongodb://${config.db.host}/${config.db.name}`)
+mongoose.connect(`mongodb://${config.db.user}:${config.db.pass}@${config.db.host}/${config.db.name}`)
   .then(() =>  {
     console.log('mongo db connection succesful');
 
