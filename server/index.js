@@ -3,12 +3,16 @@ const bodyParset = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('./config.json');
 const users = require('./routes/user');
+const dishes = require('./routes/dish');
+const orders = require('./routes/order');
 const http = require('http');
 
 // app
 const app = express();
 app.use(bodyParset.json());
 app.use('/users', users);
+app.use('/dishes', dishes);
+app.use('/orders', orders);
 
 // create web server
 const server = http.createServer(app);
