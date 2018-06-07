@@ -14,7 +14,8 @@ const OrderSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ['ordered', 'cooking', 'delivering', 'problem', 'delivered']
+    enum: ['ordered', 'cooking', 'delivering', 'problem', 'delivered'],
+    default: 'ordered'
   },
   created: {
     type: Date,

@@ -8,6 +8,8 @@ const create = (data, callback) => {
 
 const findAll = (data, callback) => {
   Order.find(data)
+    .populate('user')
+    .populate('dish')
     .then(orders => callback(null, orders))
     .catch(error => callback(error));
 }
