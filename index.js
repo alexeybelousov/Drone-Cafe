@@ -1,18 +1,25 @@
 const express = require('express');
-const bodyParset = require('body-parser');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const config = require('./config.json');
-const users = require('./routes/user');
-const dishes = require('./routes/dish');
-const orders = require('./routes/order');
 const http = require('http');
+const config = require('./server/config.json');
+const users = require('./server/routes/user');
+const dishes = require('./server/routes/dish');
+const orders = require('./server/routes/order');
 
 // app
 const app = express();
-app.use(bodyParset.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(__dirname + '/public'));
+
 app.use('/users', users);
 app.use('/dishes', dishes);
 app.use('/orders', orders);
+
+app.use(function(req, res){
+	res.status(404).send('404 Not Found');
+});
 
 // create web server
 const server = http.createServer(app);
