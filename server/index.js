@@ -22,6 +22,6 @@ mongoose.connect(`mongodb://${config.db.user}:${config.db.pass}@${config.db.host
   .then(() =>  {
     console.log('mongo db connection succesful');
 
-    server.listen(config.port, () => console.log(`Listening on port ${config.port}`));
+    server.listen(process.env.PORT || 5000, () => console.log(`Listening on port ${process.env.PORT || 5000}`));
   })
   .catch((err) => console.error(err));
