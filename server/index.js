@@ -16,12 +16,13 @@ app.use('/orders', orders);
 
 // create web server
 const server = http.createServer(app);
+const port = process.env.PORT || 3000;
 
 mongoose.Promise = global.Promise;
 mongoose.connect(`mongodb://${config.db.user}:${config.db.pass}@${config.db.host}/${config.db.name}`)
   .then(() =>  {
     console.log('mongo db connection succesful');
 
-    server.listen(process.env.PORT || 5000, () => console.log(`Listening on port ${process.env.PORT || 5000}`));
+    server.listen(port, () => console.log(`Listening on port ${port}`));
   })
   .catch((err) => console.error(err));

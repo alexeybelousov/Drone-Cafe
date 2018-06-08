@@ -33,4 +33,16 @@ router.post('/', (req, res) => {
   });
 });
 
+router.delete('/:id', (req, res) => {
+  Order.remove(eq.params.id, (err, data) => {
+    if (err) {
+      return res.status(500).send({
+        message: err.message
+      });
+    } else {
+      res.status(200).json(data);
+    }
+  });
+});
+
 module.exports = router;

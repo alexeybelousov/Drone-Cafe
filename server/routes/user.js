@@ -4,43 +4,26 @@ const User = require('../controllers/user.js');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  User.findOne(req.query.email, (err, data) => {
+router.post('/', (req, res) => {
+  User.findOne(req.body.email, (err, data) => {
     if (err) {
       return res.status(500).send({
         message: err.message
       });
-    } else {
-      if (!data) {
-        return res.status(404).send({
-          message: 'User not found'
-        });
-      }
-      res.status(200).json(data);
     }
-  });
-});
-
-router.post('/', (req, res) => {
-  User.findOne(req.query.email, (err, data) => {
-      if (err) {
-        return res.status(500).send({
-          message: err.message
-        });
-      }
-      if (!data) {
-        User.create(req.body, (err, data) => {
-          if (err) {
-            return res.status(500).send({
-              message: err.message
-            });
-          } else {
-            res.status(200).json(data);
-          }
-        })
-      } else {
-        return res.status(200).json(data);
-      }
+    if (!data) {
+      User.create(req.body, (err, data) => {
+        if (err) {
+          return res.status(500).send({
+            message: err.message
+          });
+        } else {
+          res.status(200).json(data);
+        }
+      })
+    } else {
+      return res.status(200).json(data);
+    }
   });
 });
 
