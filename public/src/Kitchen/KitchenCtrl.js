@@ -1,4 +1,4 @@
-droneCafe.controller('CustomerCtrl', function($scope, KitchenService) {
+droneCafe.controller('KitchenCtrl', function($scope, KitchenService) {
 
   $scope.orderedDishes = [];
   $scope.cookingDishes = [];
