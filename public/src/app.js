@@ -10,10 +10,10 @@ angular.module('droneCafe')
         templateUrl: 'src/Customer/Customer.html',
         controller: 'CustomerCtrl'
       })
-      // .when('/kitchen', {
-      //   templateUrl: 'src/Kitchen/Kitchen.html',
-      //   controller: 'KitchenCtrl'
-      // })
+      .when('/kitchen', {
+        templateUrl: 'src/Kitchen/Kitchen.html',
+        controller: 'KitchenCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
