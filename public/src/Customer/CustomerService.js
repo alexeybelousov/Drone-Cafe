@@ -1,6 +1,6 @@
 angular
 .module('droneCafe')
-.factory('CustomerdService', function($http) {
+.factory('CustomerService', function($http) {
 
   return {
 
