@@ -9,7 +9,7 @@ angular
     },
 
     getDishes: function() {
-        return $http.get('/dishes');
+      return $http.get('/dishes');
     },
   }
 });

@@ -4,7 +4,7 @@ angular
 
   return {
 
-    getDishes: function(status) {
+    getOrders: function(status) {
       return $http.get('/orders', { status: status });
     }
   }
