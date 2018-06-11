@@ -1,13 +1,13 @@
-droneCafe.controller('CustomerCtrl', function($scope, CustomerService) {
+droneCafe.controller('CustomerCtrl', function($scope, KitchenService) {
 
   $scope.orderedDishes = [];
   $scope.cookingDishes = [];
 
-  CookDashboardService.getDishes('ordered').then(function(res) {
+  KitchenService.getDishes('ordered').then(function(res) {
     $scope.orderedDishes = res.data;
   });
 
-  CookDashboardService.getDishes('cooking').then(function(res) {
+  KitchenService.getDishes('cooking').then(function(res) {
     $scope.cookingDishes = res.data;
   });
 
