@@ -5,7 +5,7 @@ angular
   return {
 
     getOrders: function(status) {
-      return $http.get('/orders', { status: status });
+      return $http.get('/orders?status=' + status);
     }
   }
 });
