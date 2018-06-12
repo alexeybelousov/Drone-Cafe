@@ -13,4 +13,14 @@ droneCafe.controller('KitchenCtrl', function($scope, KitchenService) {
     $scope.cookingDishes = res.data;
   });
 
+  $scope.startCooking = function(order) {
+    KitchenService.changeStatus(order, 'cooking').then(function(data) {
+    });
+  };
+
+  $scope.finishCooking = function(order) {
+    KitchenService.changeStatus(order, 'delivering').then(function(data) {
+    });
+  };
+
 });

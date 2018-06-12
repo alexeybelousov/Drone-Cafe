@@ -14,14 +14,21 @@ const findAll = (data, callback) => {
     .catch(error => callback(error));
 }
 
+const updateStatus = (id, status, callback) => {
+  Order.findOneAndUpdate( { '_id': id }, { 'status': status }, { 'new': true })
+    .then(order => callback(null, order))
+    .catch(error => callback(error));
+}
+
 const remove = (id, callback) => {
   Order.remove({ '_id': id })
-    .then(result => callback(null, res))
-    .catch(err => callback(error));
+    .then(result => callback(null, result))
+    .catch(error => callback(error));
 }
 
 module.exports = {
   create,
   findAll,
+  updateStatus,
   remove
 };

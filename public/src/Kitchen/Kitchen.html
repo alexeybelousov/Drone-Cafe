@@ -1,13 +1,15 @@
 <h3>Ordered</h3>
 <ul>
   <li ng-repeat="order in orderedDishes">
-    {{order.dish.title}} - {{order.status}}
+    {{order.dish.title}}
+    <button ng-click="startCooking(order)">Start</button>
   </li>
 </ul>
 
 <h3>Cooking</h3>
 <ul>
   <li ng-repeat="order in cookingDishes">
-    {{order.dish.title}} - {{order.status}} 
+    {{order.dish.title}} - {{order.status}}
+    <button ng-click="finishCooking(order)">Finish</button>
   </li>
 </ul>
