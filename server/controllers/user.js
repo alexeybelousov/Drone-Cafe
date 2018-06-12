@@ -13,7 +13,7 @@ const findOne = (email, callback) => {
 }
 
 const updateCredits = (id, credits, callback) => {
-  User.findOneAndUpdate( { '_id': id }, { $inc: { 'credits': credits } }, { 'new': true })
+  User.findOneAndUpdate( { '_id': id }, { 'credits': credits }, { 'new': true })
     .then(user => callback(null, user))
     .catch(error => callback(error));
 }

@@ -1,13 +1,35 @@
-<h3>Orders</h3>
-<ul>
-  <li ng-repeat="order in orders">
-    {{order.dish.title}} - {{order.status}} 
-  </li>
-</ul>
 
-<h3>Menu</h3>
-<ul>
-  <li ng-repeat="dish in dishes">
-    {{dish.title}}
-  </li>
-</ul>
+
+<form ng-if="!logged" name="customerForm" novalidate>
+  <div class="form-group">
+    <label>Name</label>
+    <input class="form-control" ng-model="customer.name" type="text" placeholder="Name" value="{{ customer.name }}>
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input class="form-control" ng-model="customer.email" type="text" placeholder="Email" {{ customer.email }}>
+  </div>
+  <button type="submit" ng-click="login(customer)" ng-disabled="customerForm.$invalid">Sign In</button>
+</form>
+
+<div ng-if="logged">
+  <p>{{customer.email}} - {{customer.credits}}</p>
+
+  <button ng-click="addCredits()">Add credits</button>
+
+  <h3>Orders</h3>
+  <ul>
+    <li ng-repeat="order in orders">
+      {{order.dish.title}} - {{order.status}}
+    </li>
+  </ul>
+
+  <h3>Menu</h3>
+  <ul>
+    <li ng-repeat="dish in dishes">
+      {{dish.title}} - {{dish.price}}
+      <button ng-if="customer.credits >= dish.price" ng-click="makeOrder(dish)">Order</button>
+      <span ng-if="customer.credits < dish.price">Need to add {{dish.price - customer.credits}} credits</span>
+    </li>
+  </ul>
+</div>

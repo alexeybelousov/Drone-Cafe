@@ -5,9 +5,6 @@ const Order = require('../controllers/order.js');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-
-  console.log(req.query);
-
   Order.findAll(req.query, (err, data) => {
     if (err) {
       return res.status(500).send({
