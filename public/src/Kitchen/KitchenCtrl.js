@@ -4,12 +4,10 @@ droneCafe.controller('KitchenCtrl', function($scope, KitchenService) {
   $scope.cookingDishes = [];
 
   KitchenService.getOrders('ordered').then(function(res) {
-    console.log(res.data);
     $scope.orderedDishes = res.data;
   });
 
   KitchenService.getOrders('cooking').then(function(res) {
-    console.log(res.data);
     $scope.cookingDishes = res.data;
   });
 
@@ -22,5 +20,14 @@ droneCafe.controller('KitchenCtrl', function($scope, KitchenService) {
     KitchenService.changeStatus(order, 'delivering').then(function(data) {
     });
   };
+
+  let socket = io();
+
+  socket.on('order created', function() {
+    console.log('order created');
+    KitchenService.getOrders('ordered').then(function(res) {
+      $scope.orderedDishes = res.data;
+    });
+  });
 
 });

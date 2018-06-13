@@ -25,6 +25,21 @@ droneCafe.controller('CustomerCtrl', function($scope, CustomerService) {
         $scope.dishes = res.data;
       });
 
+
+      let socket = io();
+    
+      socket.on('order changed', function(data) {
+        console.log(data);
+      });
+
+      socket.on('order deleted', function(data) {
+        console.log(data);
+      });
+
+      socket.on('refund', function(data) {
+        console.log(data);
+      });
+
     });
   }
 
@@ -44,8 +59,5 @@ droneCafe.controller('CustomerCtrl', function($scope, CustomerService) {
     CustomerService.newOrder($scope.customer._id, dish._id).then(function(data) {
     });
   };
-
-  // socket new order
-  // socket change status
 
 });

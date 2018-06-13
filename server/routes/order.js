@@ -29,6 +29,12 @@ router.post('/', (req, res) => {
         message: err.message
       });
     } else {
+
+
+      console.log(req.io);
+      console.log('her');
+      //req.io.emit('order created');
+
       res.status(200).json(data);
     }
   });
