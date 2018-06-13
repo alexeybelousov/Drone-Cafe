@@ -27,17 +27,29 @@ droneCafe.controller('CustomerCtrl', function($scope, CustomerService) {
 
 
       let socket = io();
-    
-      socket.on('order changed', function(data) {
-        console.log(data);
+
+      socket.on('order changed', function(changedOrder) {
+        //console.log('order changed');
+        $scope.orders = $scope.orders.map(function (order) {
+    			if (order._id == changedOrder._id) {
+    				order = changedOrder;
+            return order;
+          }
+          return order;
+    		})
+        $scope.$apply();
       });
 
-      socket.on('order deleted', function(data) {
-        console.log(data);
+      socket.on('order deleted', function(deletedOrder) {
+        //console.log('order deleted');
+        $scope.orders = $scope.orders.filter(function (order) {
+    			return order._id != deletedOrder._id;
+    		});
+        $scope.$apply();
       });
 
       socket.on('refund', function(data) {
-        console.log(data);
+        console.log('refund');
       });
 
     });
@@ -46,18 +58,20 @@ droneCafe.controller('CustomerCtrl', function($scope, CustomerService) {
   $scope.addCredits = function() {
     $scope.customer.credits += 100;
 
-    CustomerService.addCredits($scope.customer).then(function(data) {
+    CustomerService.updateCredits($scope.customer).then(function(data) {
     });
   };
 
   $scope.makeOrder = function(dish) {
     $scope.customer.credits -= dish.price;
 
-    CustomerService.addCredits($scope.customer).then(function(data) {
+    CustomerService.updateCredits($scope.customer).then(function(data) {
     });
 
-    CustomerService.newOrder($scope.customer._id, dish._id).then(function(data) {
+    CustomerService.newOrder($scope.customer._id, dish._id).then(function(order) {
+      $scope.orders.push(order.data);
     });
+
   };
 
 });

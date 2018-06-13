@@ -20,7 +20,7 @@ angular
       });
     },
 
-    addCredits: function(customer) {
+    updateCredits: function(customer) {
       return $http({
         method: 'PUT',
         url: '/users/' + customer._id,

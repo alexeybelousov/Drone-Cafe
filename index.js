@@ -15,7 +15,7 @@ const io = socketIo(server);
 
 const users = require('./server/routes/user');
 const dishes = require('./server/routes/dish');
-const orders = require('./server/routes/order');
+const orders = require('./server/routes/order')(io);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -39,12 +39,5 @@ mongoose.connect(`mongodb://${config.db.user}:${config.db.pass}@${config.db.host
   .catch((err) => console.error(err));
 
 io.on('connection', (socket) => {
-  console.log('new connection');
-  socket.on('order changed', () => {
-    // console.log(order);
-    io.emit('please update orders');
-  });
-  socket.on('disconnect', (message) => {
-    console.log('disconnect');
-  });
+  // join to room
 });
