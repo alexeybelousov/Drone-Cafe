@@ -1,13 +1,13 @@
 
 
-<form ng-if="!logged" name="customerForm" novalidate>
+<form ng-if="!logged" name="customerForm">
   <div class="form-group">
     <label>Name</label>
-    <input class="form-control" ng-model="customer.name" type="text" placeholder="Name" value="{{ customer.name }}>
+    <input class="form-control" ng-model="customer.name" type="text" placeholder="Name" value="{{ customer.name }}" required>
   </div>
   <div class="form-group">
     <label>Email</label>
-    <input class="form-control" ng-model="customer.email" type="text" placeholder="Email" {{ customer.email }}>
+    <input class="form-control" ng-model="customer.email" type="email" placeholder="Email" value="{{ customer.email }}" required>
   </div>
   <button type="submit" ng-click="login(customer)" ng-disabled="customerForm.$invalid">Sign In</button>
 </form>
