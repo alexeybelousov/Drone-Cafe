@@ -5,7 +5,7 @@ const User = require('../controllers/user.js');
 const router = express.Router();
 
 router.post('/', (req, res) => {
-  User.findOne(req.body.email, (err, data) => {
+  User.findOne(req.body, (err, data) => {
     if (err) {
       return res.status(500).send({
         message: err.message

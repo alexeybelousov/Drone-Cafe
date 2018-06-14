@@ -6,8 +6,8 @@ const create = (data, callback) => {
     .catch(error => callback(error));
 }
 
-const findOne = (email, callback) => {
-  User.findOne({ email: email })
+const findOne = (data, callback) => {
+  User.findOne(data)
     .then(user => callback(null, user))
     .catch(error => callback(error));
 }

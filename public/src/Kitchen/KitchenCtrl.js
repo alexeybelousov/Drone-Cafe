@@ -35,7 +35,6 @@ droneCafe.controller('KitchenCtrl', function($scope, KitchenService) {
   let socket = io();
 
   socket.on('order created', function() {
-    console.log('order created');
     KitchenService.getOrders('ordered').then(function(res) {
       $scope.orderedDishes = res.data;
     });

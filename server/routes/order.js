@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const drone = require('netology-fake-drone-api');
 const Order = require('../controllers/order.js');
+const User = require('../controllers/user.js');
 
 const router = express.Router();
 
@@ -79,8 +80,14 @@ module.exports = function(io) {
                   io.emit('order changed', order);
 
                   // refund credits to user
-
-                  // find order by id, get user and change credits
+                  User.findOne(order.user, (err, data) => {
+                    if (data) {
+                      let refund = data.credits + order.dish.price;
+                      User.updateCredits(order.user._id, refund, (err, data) => {
+                        io.emit('refund');
+                      })
+                    }
+                  });
 
                   // delete order
                   setTimeout(() => {

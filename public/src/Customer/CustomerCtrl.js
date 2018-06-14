@@ -9,7 +9,8 @@ droneCafe.controller('CustomerCtrl', function($scope, CustomerService) {
   }
 
   $scope.login = function (customer) {
-    CustomerService.login(customer).then(function (res) {
+
+    CustomerService.login({ name: customer.name, email: customer.email }).then(function (res) {
       $scope.logged = true;
       $scope.customer = res.data;
       localStorage.setItem('customer', JSON.stringify($scope.customer));
@@ -29,7 +30,6 @@ droneCafe.controller('CustomerCtrl', function($scope, CustomerService) {
       let socket = io();
 
       socket.on('order changed', function(changedOrder) {
-        //console.log('order changed');
         $scope.orders = $scope.orders.map(function (order) {
     			if (order._id == changedOrder._id) {
     				order = changedOrder;
@@ -41,7 +41,6 @@ droneCafe.controller('CustomerCtrl', function($scope, CustomerService) {
       });
 
       socket.on('order deleted', function(deletedOrder) {
-        //console.log('order deleted');
         $scope.orders = $scope.orders.filter(function (order) {
     			return order._id != deletedOrder._id;
     		});
@@ -49,7 +48,9 @@ droneCafe.controller('CustomerCtrl', function($scope, CustomerService) {
       });
 
       socket.on('refund', function(data) {
-        console.log('refund');
+        CustomerService.login({ name: customer.name, email: customer.email }).then(function (res) {
+          $scope.customer = res.data;
+        });
       });
 
     });
