@@ -13,7 +13,7 @@ module.exports = function(io) {
           message: err.message
         });
       } else {
-        if (!data || !data.length) {
+        if (!data) {
           return res.status(404).send({
             message: 'Orders not found'
           });
