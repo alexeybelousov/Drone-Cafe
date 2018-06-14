@@ -1,11 +1,13 @@
 const supertest = require('supertest');
-const expect = require('chai').expect;
+const chai = require('chai');
+const expect = chai.expect;
+const should = chai.should();
 
 describe('REST API', () => {
   let server;
 
   before((done) => {
-    require('../server/index');
+    require('../index');
 
     setTimeout(() => {
       server = supertest.agent('http://localhost:3000');
@@ -52,6 +54,37 @@ describe('REST API', () => {
           done();
         })
     });
+
+  });
+
+
+  describe('Model Dish', () => {
+
+    it('GET /dishes, should return array with 100 length', done => {
+      server
+        .get('/dishes')
+        .expect(200)
+        .end((err, res) => {
+          res.body.should.be.a('array');
+          res.body.length.should.be.eql(100);
+          done();
+        })
+    });
+
+  });
+
+
+  describe('Model Order', () => {
+
+    it('GET /orders, should return 200 code', done => {
+      server
+        .get('/orders')
+        .expect(200)
+        .end((err, res) => {
+          done();
+        })
+    });
+
   });
   //
   // it('DELETE /users/:id, should return status is 200', done => {
