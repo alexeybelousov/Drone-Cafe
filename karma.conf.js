@@ -7,9 +7,11 @@ module.exports = function(config) {
     files: [
       'bower_components/angular/angular.js',
       'bower_components/angular-route/angular-route.js',
+      'bower_components/angular-resource/angular-resource.js',
+      'bower_components/restangular/dist/restangular.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'components/**/*.js',
-      'view*/**/*.js'
+      'src/*.js',
+      'src/*/*.js'
     ],
 
     autoWatch: true,

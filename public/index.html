@@ -21,7 +21,7 @@
   </head>
   <body>
 
-    <div ng-view style="display:flex;min-height:100vh;flex-direction:column;background:url(./assets/the-coffee-copter-cover.png) 100% 100% no-repeat; background-size: cover;"></div>
+    <div ng-view ng-class="{backgroundImg: !logged}" style="display:flex;min-height:100vh;flex-direction:column;"></div>
 
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/materialize/dist/js/materialize.min.js"></script>
