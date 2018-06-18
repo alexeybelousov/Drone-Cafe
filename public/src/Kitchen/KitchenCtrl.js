@@ -1,5 +1,6 @@
 droneCafe.controller('KitchenCtrl', function($scope, KitchenService) {
 
+  $scope.logged = true;
   $scope.orderedDishes = [];
   $scope.cookingDishes = [];
 

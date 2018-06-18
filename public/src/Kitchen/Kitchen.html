@@ -8,11 +8,12 @@
     <div class="col s6">
       <h4>Ordered</h4>
       <ul class="collection">
-        <li ng-repeat="order in orderedDishes" class="collection-item">
-          <div style="font-size:14px;">
-            <div style="font-size: 14px;width:80%;display:inline-block;">{{order.dish.title}}</div>
+        <li ng-repeat="order in orderedDishes" class="collection-item avatar">
+          <img src="{{order.dish.image}}" alt="" class="circle"/>
+          <div style="min-height: 36px;">
+            <div style="font-size: 16px;width:80%;display:inline-block;">{{order.dish.title}}</div>
             <a class="secondary-content">
-              <button ng-click="startCooking(order)">Start</button>
+              <button class="btn waves-effect waves-light start" ng-click="startCooking(order)">Start</button>
             </a>
           </div>
         </li>
@@ -22,11 +23,12 @@
     <div class="col s6">
       <h4>Cooking</h4>
       <ul class="collection with-header">
-        <li ng-repeat="order in cookingDishes" class="collection-item">
-          <div style="font-size:14px;">
-            <div style="font-size: 14px;width:80%;display:inline-block;">{{order.dish.title}}</div>
+        <li ng-repeat="order in cookingDishes" class="collection-item avatar">
+          <img src="{{order.dish.image}}" alt="" class="circle"/>
+          <div style="min-height: 36px;">
+            <div style="font-size: 16px;width:80%;display:inline-block;">{{order.dish.title}}</div>
             <a class="secondary-content">
-              <button ng-click="finishCooking(order)">Finish</button>
+              <button class="btn waves-effect waves-light finish" ng-click="finishCooking(order)">Finish</button>
             </a>
           </div>
         </li>

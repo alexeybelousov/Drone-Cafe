@@ -12,7 +12,7 @@ describe('REST API', () => {
     setTimeout(() => {
       server = supertest.agent('http://localhost:3000');
       done();
-    }, 1000);
+    }, 2000);
   });
 
   describe('Model User', () => {
@@ -85,14 +85,31 @@ describe('REST API', () => {
         })
     });
 
+    it('POST /orders, with data should return Object', done => {
+      server
+        .post('/orders')
+        .send({
+          "dish": "5b18641c01f143530a6d75cc", "user": "5b1af07458b1795c9c5d1913"
+        })
+        .expect("Content-type", /json/)
+        .expect(200)
+        .end((err, res) => {
+          expect(res.body).to.have.property("status", "ordered");
+          expect(res.body.dish).to.have.property("_id", "5b18641c01f143530a6d75cc");
+          expect(res.body).to.have.property("user", "5b1af07458b1795c9c5d1913");
+          done();
+        })
+    });
+
+    it('DELETE /orders, should return status is 200', done => {
+      server
+        .delete('/orders')
+        .expect(200)
+        .end((err, res) => {
+          done();
+        })
+    });
+
   });
-  //
-  // it('DELETE /users/:id, should return status is 200', done => {
-  //   server
-  //     .delete('/users/0')
-  //     .expect(200)
-  //     .end((err, res) => {
-  //       done();
-  //     })
-  // });
+
 });

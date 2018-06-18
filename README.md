@@ -55,11 +55,13 @@ public/                             - AngularJS application
     Customer/               
       Customer.html         
       CustomerCtrl.js       
-      CustomerService.js    
+      CustomerService.js
+      CustomerCtrl_test.js
     Kitchen/
       Kitchen.html
       KitchenCtrl.js
       KitchenService.js
+      KitchenCtrl_test.js
     app.js
     styles.css
   index.html    

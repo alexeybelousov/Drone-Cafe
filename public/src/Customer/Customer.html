@@ -5,7 +5,7 @@
         <a>{{customer.email}} ({{customer.credits}})</a>
       </li>
       <li>
-        <a class="btn waves-effect waves-light" ng-click="addCredits()">Add credits</a>
+        <a class="btn waves-effect waves-light" id="add-credits" ng-click="addCredits()">Add credits</a>
       </li>
     </ul>
   </div>
@@ -52,9 +52,10 @@
     <div class="col s4">
       <h4>Orders</h4>
       <ul class="collection with-header">
-        <li ng-repeat="order in orders" class="collection-item">
+        <li ng-repeat="order in orders" class="collection-item avatar">
+          <img src="{{order.dish.image}}" alt="" class="circle"/>
           <div style="font-size:14px;">
-            <div style="font-size: 14px;width:80%;display:inline-block;">{{order.dish.title}}</div>
+            <div style="font-size: 16px;width:80%;display:inline-block;">{{order.dish.title}}</div>
             <a class="secondary-content">
               <span>{{order.status}}</span>
             </a>

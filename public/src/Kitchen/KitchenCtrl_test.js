@@ -1,5 +1,5 @@
-describe('Check that CustomerCtrl controller', function() {
-  
+describe('Check that KitchenCtrl controller', function() {
+
   var $scope = null;
   beforeEach(module('droneCafe'));
 
@@ -9,7 +9,7 @@ describe('Check that CustomerCtrl controller', function() {
 
   beforeEach(inject(function ($rootScope) {
     $scope = $rootScope.$new();
-    controller = $controller('CustomerCtrl', { $scope: $scope });
+    controller = $controller('KitchenCtrl', { $scope: $scope });
   }));
 
   it('exists', function() {

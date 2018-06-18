@@ -117,6 +117,18 @@ module.exports = function(io) {
     });
   });
 
+  router.delete('/', (req, res) => {
+    Order.removeAll((err, data) => {
+      if (err) {
+        return res.status(500).send({
+          message: err.message
+        });
+      } else {
+        res.status(200).json(data);
+      }
+    });
+  });
+
   return router;
 };
 

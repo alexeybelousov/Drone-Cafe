@@ -10,6 +10,7 @@ module.exports = function(config) {
       'bower_components/angular-resource/angular-resource.js',
       'bower_components/restangular/dist/restangular.js',
       'bower_components/angular-mocks/angular-mocks.js',
+      'bower_components/socket.io-client/dist/socket.io.js',
       'src/*.js',
       'src/*/*.js'
     ],

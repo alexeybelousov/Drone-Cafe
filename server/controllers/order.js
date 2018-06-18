@@ -31,9 +31,16 @@ const remove = (id, callback) => {
     .catch(error => callback(error));
 }
 
+const removeAll = (callback) => {
+  Order.remove({})
+    .then(result => callback(null, result))
+    .catch(error => callback(error));
+}
+
 module.exports = {
   create,
   findAll,
   updateStatus,
-  remove
+  remove,
+  removeAll
 };
