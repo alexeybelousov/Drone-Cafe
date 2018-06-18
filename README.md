@@ -9,30 +9,46 @@
 * Интерфейс системы построен на фреймворке AngularJS
 * Для хранения блюд, заказов и их состояний используется база данных MongoDB
 * В качестве CSS фреймворка используется Materialyze
-* Ключевые части системы покрыты тестами с использованием Mocha, Supertest, Protractor, Jasmine
+* Ключевые части системы покрыты тестами
 
 ## Запуск приложения
 
 1. npm start
-2. [http://localhost:3000](http://localhost:3000)
+2. Customer application - [http://localhost:3000/#!/](http://localhost:3000/#!/)
+3. Kitchen application - [http://localhost:3000/#!/kitchen](http://localhost:3000/#!/kitchen)
+
+## Heroku демо
+
+1. Customer application - [https://drone-cafe-20180608.herokuapp.com/#!/](https://drone-cafe-20180608.herokuapp.com/#!/)
+2. Kitchen application - [https://drone-cafe-20180608.herokuapp.com/#!/kitchen](https://drone-cafe-20180608.herokuapp.com/#!/kitchen)
 
 ## Запуск Тестов
 
-1. npm run test-api
-2. npm test
-3. npm run protractor
+1. npm run test-api - Запуск юнит тестов REST API сервера (Mocha, Chai, Supertest)
+2. npm test - Запуск юнит тестов AngularJS приложения (Karma, Chai)
+3. npm run protractor - Запуск приемочных тестов AngularJS приложения (Jasmine, Protractor)
 
 ## Архитектура проекта
 
 ```
-server/                             
+server/                             - REST API server
   controllers/
+    dish.js
+    order.js
+    user.js
   etc/
+    menu.json
   models/
-  routes/                       
-  config.json                                                    
+    dish.js
+    order.js
+    user.js
+  routes/
+    dish.js
+    order.js
+    user.js
+  config.json                                                  
 node_modules/                    
-public/                          
+public/                             - AngularJS application
   assets/                        
   bower_components/              
   src/                           
@@ -47,7 +63,7 @@ public/
     app.js
     styles.css
   index.html    
-test/
+test/                               - e2e and unit tests
   e2e/
     protractor.conf.js
     scenarios.js
