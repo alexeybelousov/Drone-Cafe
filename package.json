@@ -15,7 +15,7 @@
     "test-api": "mocha --timeout 10000",
     "preupdate-webdriver": "npm install",
     "update-webdriver": "webdriver-manager update",
-    "_preprotractor": "npm run update-webdriver",
+    "preprotractor": "npm run update-webdriver",
     "protractor": "protractor test/e2e/protractor.conf.js"
   },
   "author": "Alexey Belousov",
